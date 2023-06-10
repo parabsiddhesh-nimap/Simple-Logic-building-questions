@@ -215,3 +215,43 @@ function findSum(arr){
     return newArr;
 }
 // console.log(findSum([80, 60, 10, 50, 30, 100, 0, 50]))
+
+/* 
+15. Given an array of strings, group the anagrams together. 
+You can return the answer in any order.
+
+Input: strs = ["eat","tea","tan","ate","nat","bat"]
+ Output: [["bat"],["nat","tan"],["ate","eat","tea"
+*/
+let arrs = ["eat","tea","tan","ate","nat","bat"];
+function groupAnagram(arrs){
+    let map = new Map();
+    let sortedWord ;
+
+    for (let i=0; i<arrs.length; i++){
+        sortedWord = arrs[i].split("").sort().join("");
+        console.log(sortedWord);
+        if(map.has(sortedWord)){
+            map.get(sortedWord).push(arrs[i]);
+        }else map.set(sortedWord,[arrs[i]]);
+    }
+    
+    return Array.from(map.values());
+}
+// console.log(groupAnagram(arrs));
+
+/*
+16. Find frequency of each and every character in a string.
+Input: Engineer
+Output : e3n2g1i1r1
+*/
+
+function frequency(str){
+    let count = {};
+    for (let i = 0; i < str.length; i++){
+        char = str[i];
+        count[char] = (isNaN(count[char]) ? 1 : count[char] + 1);
+    }
+    return count;
+}
+console.log(frequency('Mujjafar'))
